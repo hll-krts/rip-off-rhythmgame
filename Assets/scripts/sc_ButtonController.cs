@@ -19,20 +19,34 @@ public class sc_ButtonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyDown(theKey))
+        
+        //Button animation
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            theSpriteRenderer.sprite = Pressed;
+            UpSpriteRenderer.sprite = UpPressed;
         }
-        if (Input.GetKeyUp(theKey))
+        if (Input.GetKeyUp(KeyCode.E))
         {
-            theSpriteRenderer.sprite = Default;
-        }*/
+            UpSpriteRenderer.sprite = UpDefault;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            DownSpriteRenderer.sprite = DownPressed;
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            DownSpriteRenderer.sprite = DownDefault;
+        }
+        
+
+
         if (Input.touchCount > 0)
         {
             Touch touchfirst = Input.GetTouch(0);
 
-            if (touchfirst.position.x > 415)
+            if (touchfirst.position.x > Screen.width/2)
             {
+
                 switch (touchfirst.phase)
                 {
                     case TouchPhase.Began:
@@ -59,7 +73,7 @@ public class sc_ButtonController : MonoBehaviour
             {
                 Touch touchSecond = Input.GetTouch(1);
 
-                if (touchSecond.position.x > 415)
+                if (touchSecond.position.x > Screen.width/2) //> 415)
                 {
                     switch (touchSecond.phase)
                     {
