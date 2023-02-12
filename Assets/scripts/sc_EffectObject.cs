@@ -8,7 +8,13 @@ public class sc_EffectObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(GameObject.Find("noteHolder").GetComponent<sc_BeatScroller>().isMirrored == true)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        } else
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
     }
 
     // Update is called once per frame

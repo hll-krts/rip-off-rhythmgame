@@ -6,9 +6,12 @@ public class sc_BeatScroller : MonoBehaviour
 {
     public float Tempo;
     public bool StartControl;
+    
+    public bool isMirrored;
     // Start is called before the first frame update
     void Start()
     {
+        isMirrored = false;
         Tempo = Tempo / 60f;
     }
 
