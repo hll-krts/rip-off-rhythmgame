@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class sc_NoteScript : MonoBehaviour
 {
-    public bool canBePressed;
+    public bool canBePressed = false;
     public KeyCode theKey;
     public GameObject Button;
     public GameObject NormalHit, GoodHit, PerfectHit, Miss;
@@ -18,14 +18,13 @@ public class sc_NoteScript : MonoBehaviour
     void Update()
     {
 
-        
         KeyCode inputTemp = KeyCode.Space; //temp input to make the touches input a KeyCode
         bool pass = false; // use this to compare the theKey to the KeyCode, set it to true if they are the same
         if (Input.touchCount > 0)
         {
             Touch touchfirst = Input.GetTouch(0);
 
-            if (touchfirst.position.x > Screen.width/2)
+            if (touchfirst.position.x > Screen.width / 2)
             {
 
                 switch (touchfirst.phase)
@@ -54,16 +53,16 @@ public class sc_NoteScript : MonoBehaviour
             {
                 Touch touchSecond = Input.GetTouch(1);
 
-                if (touchSecond.position.x > Screen.width/2)
+                if (touchSecond.position.x > Screen.width / 2)
                 {
                     switch (touchSecond.phase)
                     {
                         case TouchPhase.Began:
-                        inputTemp = KeyCode.E;
-                        break;
-                    case TouchPhase.Ended:
-                        inputTemp = KeyCode.Space;
-                        break;
+                            inputTemp = KeyCode.E;
+                            break;
+                        case TouchPhase.Ended:
+                            inputTemp = KeyCode.Space;
+                            break;
                     }
                 }
                 else
@@ -71,18 +70,18 @@ public class sc_NoteScript : MonoBehaviour
                     switch (touchSecond.phase)
                     {
                         case TouchPhase.Began:
-                        inputTemp = KeyCode.D;
-                        break;
-                    case TouchPhase.Ended:
-                        inputTemp = KeyCode.Space;
-                        break;
+                            inputTemp = KeyCode.D;
+                            break;
+                        case TouchPhase.Ended:
+                            inputTemp = KeyCode.Space;
+                            break;
                     }
                 }
             }
         }
 
 
-        if(inputTemp == theKey)
+        if (inputTemp == theKey)
         {
             pass = true;
         }
@@ -92,7 +91,7 @@ public class sc_NoteScript : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(theKey)||pass)
+        if (Input.GetKeyDown(theKey) || pass)
         {
             if (canBePressed)
             {
@@ -122,6 +121,7 @@ public class sc_NoteScript : MonoBehaviour
             }
         }
     }
+
 
     void OnTriggerEnter2D(Collider2D other)
     {
