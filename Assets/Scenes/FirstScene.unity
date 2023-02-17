@@ -1839,6 +1839,7 @@ GameObject:
   m_Component:
   - component: {fileID: 500532958}
   - component: {fileID: 500532962}
+  - component: {fileID: 500532964}
   - component: {fileID: 500532959}
   - component: {fileID: 500532963}
   m_Layer: 3
@@ -1856,7 +1857,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500532957}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 17, y: 0, z: 0}
+  m_LocalPosition: {x: 5.75, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1878,6 +1879,7 @@ MonoBehaviour:
   canBePressed: 0
   Kamera: {fileID: 519420028}
   mirrorNote: {fileID: 500532957}
+  noteHolder: {fileID: 0}
 --- !u!212 &500532962
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1943,9 +1945,28 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1}
+  m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.45, y: 1}
   m_Direction: 0
+--- !u!114 &500532964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500532957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4359db51ba6311b41b48863f3e3e1072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBePressed: 0
+  theKey: 101
+  Button: {fileID: 7893591}
+  NormalHit: {fileID: 1906946779520402699, guid: ca822c80d45acb14db18e0174206d52e, type: 3}
+  GoodHit: {fileID: 2547885009350828784, guid: ca8938930b1137940914190a40c59cf1, type: 3}
+  PerfectHit: {fileID: 1470008355975898458, guid: 70f62892786acaf4196cf582d8c8e4fb, type: 3}
+  Miss: {fileID: 4429594685668275986, guid: 2775eb76d13ce4e4899d6ee3ea1bece0, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3430,6 +3451,7 @@ MonoBehaviour:
   Tempo: 77
   StartControl: 0
   isMirrored: 0
+  songSpeed: 1
 --- !u!1 &1075242124
 GameObject:
   m_ObjectHideFlags: 0
@@ -3440,6 +3462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1075242125}
   - component: {fileID: 1075242128}
+  - component: {fileID: 1075242132}
   - component: {fileID: 1075242130}
   - component: {fileID: 1075242131}
   m_Layer: 3
@@ -3457,7 +3480,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075242124}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 29.52, y: 0, z: 0}
+  m_LocalPosition: {x: 29.52, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3531,6 +3554,7 @@ MonoBehaviour:
   canBePressed: 0
   Kamera: {fileID: 519420028}
   mirrorNote: {fileID: 1075242124}
+  noteHolder: {fileID: 0}
 --- !u!70 &1075242131
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3544,9 +3568,28 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1}
+  m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.45, y: 1}
   m_Direction: 0
+--- !u!114 &1075242132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075242124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4359db51ba6311b41b48863f3e3e1072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canBePressed: 0
+  theKey: 100
+  Button: {fileID: 601756046}
+  NormalHit: {fileID: 1906946779520402699, guid: ca822c80d45acb14db18e0174206d52e, type: 3}
+  GoodHit: {fileID: 2547885009350828784, guid: ca8938930b1137940914190a40c59cf1, type: 3}
+  PerfectHit: {fileID: 1470008355975898458, guid: 70f62892786acaf4196cf582d8c8e4fb, type: 3}
+  Miss: {fileID: 4429594685668275986, guid: 2775eb76d13ce4e4899d6ee3ea1bece0, type: 3}
 --- !u!1 &1082618705
 GameObject:
   m_ObjectHideFlags: 0
@@ -3769,8 +3812,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1204411533}
   - component: {fileID: 1204411535}
-  - component: {fileID: 1204411534}
   - component: {fileID: 1204411536}
+  - component: {fileID: 1204411534}
   m_Layer: 0
   m_Name: GM
   m_TagString: Untagged
@@ -3933,14 +3976,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204411532}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22ff196702a61bd449e3e8b1025c6eba, type: 3}
+  m_Script: {fileID: 11500000, guid: 56388e9b0d38bb54586dd006319f4849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBePressed: 0
-  Kamera: {fileID: 519420028}
-  mirrorNote: {fileID: 1075242124}
+  UpNotes: []
+  DownNotes: []
+  MirrorNotes: []
 --- !u!1 &1261649511
 GameObject:
   m_ObjectHideFlags: 0
