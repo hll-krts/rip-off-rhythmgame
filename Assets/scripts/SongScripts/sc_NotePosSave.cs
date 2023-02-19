@@ -6,9 +6,12 @@ using UnityEngine;
 
 public class sc_NotePosSave : MonoBehaviour
 {
+
+    [SerializeField] private SongData _SongData = new SongData();
     // Start is called before the first frame update
     public GameObject[] UpNotes, DownNotes, MirrorNotes;
     string[] mirrorNote, upNote, downNote;
+    
     void Start()
     {
         /*NotePos notePosition = new NotePos{
@@ -31,13 +34,33 @@ public class sc_NotePosSave : MonoBehaviour
     {
 
     }
+
+    [System.Serializable]
+    public class SongData
+    {
+        public string songName;
+        public string songArtist;
+        public string songAudioPath;
+        public float songTempo;
+        public int songDifficulty;
+        public List<SongNotes> songNotes = new List<SongNotes>();
+    }
+
+
+    [System.Serializable]
+    public class SongNotes
+    {
+        public GameObject[] topNotes;
+        public GameObject[] botNotes;
+        public GameObject[] mirrorNotes;
+    }
+
     private void SaveToFile()
     {
-        using (StreamWriter sw = File.CreateText(Application.dataPath))
-        {
-
-        };
+        string songData = JsonUtility.ToJson(_SongData);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/SongData.json", songData);
     }
+
     private void SaveUpNotePos()
     {
         upNote = new string[UpNotes.Length];
