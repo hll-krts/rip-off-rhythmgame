@@ -9,25 +9,39 @@ public class sc_SongData : MonoBehaviour
 
     public AudioClip[] AllSongs;
     [SerializeField] private SongData _SongData = new SongData();
+	[SerializeField] private SongList _SongList = new SongList();
     // Start is called before the first frame update
     public GameObject[] UpNotes, DownNotes, MirrorNotes;
-    string songData;
 
     void Start()
     {
-        Debug.Log(AllSongs[0].name.Split("_")[1]);
+        //Debug.Log(AllSongs[0].name.Split("_")[1]);
         UpNotes = GameObject.FindGameObjectsWithTag("noteUp");
         DownNotes = GameObject.FindGameObjectsWithTag("noteDown");
         MirrorNotes = GameObject.FindGameObjectsWithTag("mirrorNote");
+		
+        LoadFromFile();
         SaveSongData();
-
+		
         SaveToFile();
-        ReadFromFile();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+    }
+	
+	private void LoadFromFile()
+    {
+
+        string tempData = System.IO.File.ReadAllText(Application.dataPath + "\\SongData.json");
+
+        SongList listSongData = new SongList();
+		
+        listSongData = JsonUtility.FromJson<SongList>(tempData);
+        _SongList = listSongData;
+
 
     }
 
@@ -43,7 +57,7 @@ public class sc_SongData : MonoBehaviour
         sDO.songAudioPath = "\\" + AllSongs[sDO.SongID].name + ".mp3";
         sDO.songTempo = float.Parse(AllSongs[sDO.SongID].name.Split("_")[3]);
         sDO.songDifficulty = int.Parse(AllSongs[sDO.SongID].name.Split("_")[4]);
-        //sDO.songNotes = new List<SongNotes>();
+        sDO.songNotes = new List<SongNotes>();
 
         for (int i = 0; i < UpNotes.Length; i++)
         {
@@ -73,7 +87,14 @@ public class sc_SongData : MonoBehaviour
         }
 
         _SongData = sDO;
+        _SongList.songDataFromFile.Add(_SongData);
 
+    }
+	
+	[System.Serializable]
+    public class SongList
+    {   
+        public List<SongData> songDataFromFile = new List<SongData>();
     }
 
     [System.Serializable]
@@ -99,12 +120,7 @@ public class sc_SongData : MonoBehaviour
 
     private void SaveToFile()
     {
-        songData = JsonUtility.ToJson(_SongData);
-        System.IO.File.AppendAllText(Application.dataPath + "\\SongData.json", songData);
-    }
-
-    private void ReadFromFile()
-    {
-        _SongData = JsonUtility.FromJson<SongData>(songData);
+        string songData = JsonUtility.ToJson(_SongList);
+        System.IO.File.WriteAllText(Application.dataPath + "\\SongData.json", songData);
     }
 }

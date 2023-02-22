@@ -11,6 +11,21 @@ public class sc_NoteScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(this.transform.position.y == -0.5f)
+        {
+            theKey = KeyCode.E;  
+        } else
+        {
+            theKey = KeyCode.D;  
+        }
+        if (theKey == KeyCode.E)
+        {
+            Button = GameObject.Find("Buttons_Blue");
+        } 
+        else if (theKey == KeyCode.D)
+        {
+            Button = GameObject.Find("Buttons_Red");
+        }
 
     }
 

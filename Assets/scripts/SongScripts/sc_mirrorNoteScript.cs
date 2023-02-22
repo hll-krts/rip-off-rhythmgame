@@ -12,6 +12,7 @@ public class sc_mirrorNoteScript : MonoBehaviour
     void Start()
     {
         noteHolder = GameObject.Find("noteHolder");
+        Kamera = GameObject.FindWithTag("MainCamera");
     }
 
     // Update is called once per frame
