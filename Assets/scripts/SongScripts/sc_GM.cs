@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class sc_GM : MonoBehaviour
 {
@@ -101,6 +102,12 @@ public class sc_GM : MonoBehaviour
 
                 FinaleSkorText.text = currentScore.ToString();
             }
+        }
+        if(!Musik.isPlaying && resultScreen.activeInHierarchy){
+            
+                if(Input.anyKeyDown){
+                    AsyncOperation LoadMainMenu = SceneManager.LoadSceneAsync(0);
+                }
         }
     }
 
